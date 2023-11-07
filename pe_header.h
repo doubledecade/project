@@ -21,8 +21,11 @@ private:
     std::string file_path;
     IMAGE_DOS_HEADER dosHeader;
     IMAGE_NT_HEADERS32 ntHeaders32;
+    IMAGE_NT_HEADERS64 ntHeaders64;
     IMAGE_FILE_HEADER fileHeader;
     IMAGE_OPTIONAL_HEADER32 optionalHeader32;
+    IMAGE_OPTIONAL_HEADER64 optionalHeader64;
+    int digit=0; //0 是32位，1是64位
 };
 
 
