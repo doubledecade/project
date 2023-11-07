@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include "pe_header.h"
+#include "string.h"
 #if 0
 void test(){
     std::ifstream file("example.exe", std::ios::binary); // 打开PE文件，替换为您的PE文件路径
@@ -78,7 +79,7 @@ int main(){
     pe_header test;
 
     //test.load_file("D:\\Everything\\Everything.exe");
-    test.load_file("C:\\Users\\dell\\Downloads\\offsetexplorer_64bit.exe");
+    test.load_file("D:/Wireshark/capinfos.exe");
     //test.load_file("C:\\Users\\dell\\Desktop\\2.pcap");
     return 0;
 }
