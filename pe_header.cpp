@@ -29,12 +29,32 @@ void pe_header::load_file(std::string _path) {
                 //32位
                 file.read(reinterpret_cast<char*>(&ntHeaders32), sizeof(IMAGE_NT_HEADERS32));
                 digit=0;
+                //复制节区表
+                for(int i=0;i<ntHeaders32.FileHeader.NumberOfSections;i++){
+                    IMAGE_SECTION_HEADER temp;
+                    file.seekg(dosHeader.e_lfanew+sizeof (IMAGE_NT_HEADERS32)+sizeof(IMAGE_SECTION_HEADER)*i, std::ios::beg);
+                    file.read(reinterpret_cast<char*>(&temp), sizeof(IMAGE_SECTION_HEADER));
+                    section_header_vec.push_back(temp);
+                }
 
+
+               for(auto &iter:section_header_vec){
+                    std::cout << "Name: " << iter.Name << std::endl;
+                }
             } else if(Machine==IMAGE_FILE_MACHINE_AMD64){
                 //64位
                 file.read(reinterpret_cast<char*>(&ntHeaders64), sizeof(IMAGE_NT_HEADERS64));
                 digit=1;
-
+                //复制节区表
+                for(int i=0;i<ntHeaders64.FileHeader.NumberOfSections;i++){
+                    IMAGE_SECTION_HEADER temp;
+                    file.seekg(dosHeader.e_lfanew+sizeof (IMAGE_NT_HEADERS64)+sizeof(IMAGE_SECTION_HEADER)*i, std::ios::beg);
+                    file.read(reinterpret_cast<char*>(&temp), sizeof(IMAGE_SECTION_HEADER));
+                    section_header_vec.push_back(temp);
+                }
+                for(auto &iter:section_header_vec){
+                    std::cout << "Name: " << iter.Name << std::endl;
+                }
             }
 
             // 输出一些基本信息

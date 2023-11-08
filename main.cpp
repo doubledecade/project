@@ -79,8 +79,8 @@ int main(){
     pe_header test;
 
     //test.load_file("D:\\Everything\\Everything.exe");
-    test.load_file("D:/Wireshark/capinfos.exe");
-    //test.load_file("C:\\Users\\dell\\Desktop\\2.pcap");
+    //test.load_file("C:\\Users\\dell\\Downloads\\PEview\\PEview.exe");
+    test.load_file("C:/Users/dell/Downloads/offsetexplorer_64bit.exe");
     return 0;
 }
 #endif

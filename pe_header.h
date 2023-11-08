@@ -14,6 +14,7 @@
 #define PROJECT_PE_HEADER_H
 #include "string"
 #include <windows.h>
+#include "vector"
 class pe_header {
 public:
  void load_file(std::string path);
@@ -23,8 +24,7 @@ private:
     IMAGE_NT_HEADERS32 ntHeaders32;
     IMAGE_NT_HEADERS64 ntHeaders64;
     IMAGE_FILE_HEADER fileHeader;
-    IMAGE_OPTIONAL_HEADER32 optionalHeader32;
-    IMAGE_OPTIONAL_HEADER64 optionalHeader64;
+    std::vector<IMAGE_SECTION_HEADER> section_header_vec;
     int digit=0; //0 是32位，1是64位
 };
 
